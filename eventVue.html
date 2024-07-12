@@ -1,0 +1,50 @@
+<?php
+include_once"../../../Public/include/header.php";
+?>
+    
+    <div class="container intro">
+        <h3>Bienvenue à nos Événements Inoubliables !</h3>
+        <p>
+            Chaque événement est une opportunité unique d'acquérir des <span>connaissances inestimables</span>
+            et de vivre des <span>expériences mémorables</span>.
+            <span>Ne manquez pas cette chance de faire partie d'une communauté dynamique</span> !
+        </p>
+    </div>
+
+    <div class="container">
+        <!-- Upcoming Events Section -->
+        <div class="event-section">
+            <h2>Événements à venir</h2>
+            <div class="event-list">
+                <?php foreach ($donnees as $event): ?>
+                    <div class="event-item" data-aos="fade-up">
+                        <img src="../assets/img/event.jpeg" alt="Event Image">
+                        <div class="event-details">
+                            <h3><?php echo $event['titre']; ?></h3>
+                            <p><?php echo $event['description']; ?></p>
+                            <p class="date"><span>Date: </span><?php echo $event['event_date']; ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.event-item');
+            items.forEach(item => {
+                item.addEventListener('mouseover', () => {
+                    item.classList.add('hovered');
+                });
+                item.addEventListener('mouseout', () => {
+                    item.classList.remove('hovered');
+                });
+            });
+        });
+    </script>
+<?php
+include_once"../../../Public/include/footer.php";
+?>
